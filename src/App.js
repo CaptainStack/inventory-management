@@ -25,8 +25,18 @@ class App extends Component {
       option => <option key={ option.id } value={option.id} >{ option.code }</option>
     );
     let items = this.props.state.items.filter(item => this.props.state.selected_inventory ? item.inventory_id === this.props.state.selected_inventory : false).map(
-      item => <li key={ item.id }>{ `${item.id} - ${item.friendly_name}` }</li>
+      item => 
+        <li key={ item.id }>
+          { `${item.id} - ${item.friendly_name}` }
+          <a onClick={ event => store.dispatch({ type: 'ADD_ITEM_TO_LIST', item: item }) }>Add to List</a>
+        </li>
     );
+    
+    let review_items = this.props.state.items_list.map(item => 
+      <li key={ item.id }>
+        { item.friendly_name }
+        <a onClick={ event => store.dispatch({ type: 'REMOVE_ITEM_FROM_LIST', item: item })}>Remove</a>
+      </li>);
     return (
     <div className="App">
       <div className="App-header">
@@ -47,6 +57,7 @@ class App extends Component {
           </div>
           { items }
           <li>Review Pallets Selected For Pickup</li>
+          { review_items }
           <li>Finalize Your Request</li>
         </ol>
       </div>
