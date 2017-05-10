@@ -1,5 +1,5 @@
 import { INITIAL_STATE } from './initial_state';
-import { update_inventory, update_filter_query, update_selected_inventory } from './actions';
+import { update_inventory, update_filter_query, update_selected_inventory, unselect_inventory } from './actions';
 
 export default function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
@@ -9,6 +9,8 @@ export default function reducer(state = INITIAL_STATE, action) {
       return update_filter_query(state, action.filter_query);
     case 'UPDATE_SELECTED_INVENTORY':
       return update_selected_inventory(state, action.selected_inventory);
+    case 'UNSELECT_INVENTORY':
+      return unselect_inventory(state);
     default:
       return state;
   }

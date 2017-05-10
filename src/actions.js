@@ -13,3 +13,8 @@ export const update_selected_inventory = (state, selected_inventory) => {
   state.selected_inventory = Number.parseInt(selected_inventory, 10);
   return state;
 }
+
+export const unselect_inventory = (state) => {
+  state.selected_inventory = '';
+  return state;
+}

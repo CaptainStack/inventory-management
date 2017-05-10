@@ -41,6 +41,10 @@ class App extends Component {
             { options }
           </select>
           <li>Choose From Pallet Selection List</li>
+          <div>
+            { this.props.state.selected_inventory ? this.props.state.inventory.find(inventory => inventory.id === this.props.state.selected_inventory).description : null }
+            <button disabled={!this.props.state.selected_inventory} onClick={ event => store.dispatch({ type: 'UNSELECT_INVENTORY' }) }>Done</button>
+          </div>
           { items }
           <li>Review Pallets Selected For Pickup</li>
           <li>Finalize Your Request</li>
