@@ -1,1 +1,4 @@
-export const INITIAL_STATE = 'Hello world';
+export const INITIAL_STATE = {
+  inventory: [],
+  items: []
+};
