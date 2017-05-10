@@ -15,11 +15,13 @@ class App extends Component {
           .then(res => res.json())
           .then(fetched_items => store.dispatch({ type: 'UPDATE_INVENTORY', inventory: inventory, items: fetched_items }))
       })
-      
   }
 
   render() {
-    let options = this.props.state.inventory.map(
+    let options = this.props.state.inventory.filter(option => { 
+      let option_id = option.id.toString(); 
+      return option_id.includes(this.props.state.filter_query) || option.code.includes(this.props.state.filter_query);
+    }).map(
       option => <option key={ option.id }>{ option.code }</option>
     );
     let items = this.props.state.items.map(
@@ -34,6 +36,7 @@ class App extends Component {
       <div className="App-intro">
         <ol>
           <li>Add To Pallet Selection List</li>
+          <input type='text' value={ this.props.state.filter_query } onChange={ event => store.dispatch({ type: 'UPDATE_FILTER_QUERY', filter_query: event.target.value }) }></input>
           <select>
             { options }
           </select>
