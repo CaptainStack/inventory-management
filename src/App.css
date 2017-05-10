@@ -1,24 +1,76 @@
-.App {
-  text-align: center;
+h1 {
+  color: #7F8797;
+  display: flex;
+  align-items: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+.number-label {
+  border-radius: 50%;
+  background-color: #2F9BCB;
   color: white;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  margin-right: 15px;
 }
 
-.App-intro {
-  font-size: large;
+.selected-item-box {
+  background-color: #E6E7E8;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.selected-item-box button {
+  border: none;
+  background-color: #2F9BCB;
+  color: white;
+  padding: 5px 20px 5px 20px;
+}
+
+.selected-item-box button:disabled {
+  background-color: #D0D2D3;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  padding: 8px;
+}
+
+td[colspan="3"] {
+  border-bottom: none;
+}
+
+th {
+  border-bottom: 2px solid #E6E7E8;
+  border-top: 2px solid #E6E7E8;
+}
+
+thead tr th:first-child {
+  border-left: 2px solid #E6E7E8;
+}
+
+thead tr th:last-child {
+  border-right: 2px solid #E6E7E8;
+}
+
+tbody td {
+  border-bottom: 1px solid #D0D2D3;
+}
+
+a {
+  cursor: pointer;
+  color: #3ACCFB;
+}
+
+table {
+  margin-top: 15px;
 }
