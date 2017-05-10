@@ -24,7 +24,7 @@ class App extends Component {
     }).map(
       option => <option key={ option.id } value={option.id} >{ option.code }</option>
     );
-    let items = this.props.state.items.filter(item => this.props.state.selected_inventory ? item.inventory_id === this.props.state.selected_inventory : true).map(
+    let items = this.props.state.items.filter(item => this.props.state.selected_inventory ? item.inventory_id === this.props.state.selected_inventory : false).map(
       item => <li key={ item.id }>{ `${item.id} - ${item.friendly_name}` }</li>
     );
     return (

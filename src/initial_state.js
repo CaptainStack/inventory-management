@@ -2,5 +2,5 @@ export const INITIAL_STATE = {
   inventory: [],
   items: [],
   filter_query: '',
-  selected_inventory: 150
+  selected_inventory: ''
 };
