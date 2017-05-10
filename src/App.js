@@ -22,9 +22,9 @@ class App extends Component {
       let option_id = option.id.toString(); 
       return option_id.includes(this.props.state.filter_query) || option.code.includes(this.props.state.filter_query);
     }).map(
-      option => <option key={ option.id }>{ option.code }</option>
+      option => <option key={ option.id } value={option.id} >{ option.code }</option>
     );
-    let items = this.props.state.items.map(
+    let items = this.props.state.items.filter(item => this.props.state.selected_inventory ? item.inventory_id === this.props.state.selected_inventory : true).map(
       item => <li key={ item.id }>{ `${item.id} - ${item.friendly_name}` }</li>
     );
     return (
@@ -37,7 +37,7 @@ class App extends Component {
         <ol>
           <li>Add To Pallet Selection List</li>
           <input type='text' value={ this.props.state.filter_query } onChange={ event => store.dispatch({ type: 'UPDATE_FILTER_QUERY', filter_query: event.target.value }) }></input>
-          <select>
+          <select value={ this.props.state.selected_inventory } onChange={ event => store.dispatch({ type: 'UPDATE_SELECTED_INVENTORY', selected_inventory: event.target.value }) }>
             { options }
           </select>
           <li>Choose From Pallet Selection List</li>
